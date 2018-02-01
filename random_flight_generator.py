@@ -1,26 +1,15 @@
 """
-Whoop
+Aðal script fyrir db generator
 """
 
 import random
+from ffdbessentials import Airport
 
-# Note þennan klasa til að búa til flug.
-# Þurfum að bæta við öllum properties sem
-# við notum. (arrival date og stuff)
-class Flight:
-    """
-    Note þennan klasa til að búa til flug.
-    Þurfum að bæta við öllum properties sem
-    við notum. (arrival date og stuff)
-    """
-    def __init__(self, departure, arrival):
-        self.departure = departure
-        self.arrival = arrival
+ap1 = Airport("Akureyri", 605, 194)
+ap2 = Airport("Reykjavík", 262, 513)
+ap3 = Airport("Ísafjörður", 174, 96)
+ap4 = Airport("Egilsstaðir", 935, 262)
 
-
-
-f1 = Flight(random.randint(0, 100), random.randint(0, 100))
-
-print('{};{}'.format(f1.departure, f1.arrival))
-
-
+print(str(ap1.distanceTo(ap2)))
+print(str(ap2.distanceTo(ap3)))
+print(str(ap1.distanceTo(ap4)))
