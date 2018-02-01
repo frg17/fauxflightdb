@@ -4,3 +4,8 @@ ak 605, 194
 rvk 262, 513
 
 95 = 50km
+
+tími frá ak -> rvk 55min, 46min
+tími frá egs -> rvk 64min
+
+kmh = 290

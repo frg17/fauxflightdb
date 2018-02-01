@@ -13,6 +13,9 @@ class Airport:
         self.x = x
         self.y = y
 
+    def __repr__(self):
+        return "{} ({}, {})".format(self.name, self.x, self.y)
+
     def distance_to(self, destination):
         """
         Reiknar fjarlægð milli self og destination
