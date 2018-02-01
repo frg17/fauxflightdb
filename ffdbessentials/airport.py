@@ -1,17 +1,7 @@
 """
-Heldur utan um klasana sem við ætlum að nota.
+Airport class module
 """
 import math
-
-class Flight:
-    """
-    Note þennan klasa til að búa til flug.
-    Þurfum að bæta við öllum properties sem
-    við notum. (arrival date og stuff)
-    """
-    def __init__(self, departure, arrival):
-        self.departure = departure
-        self.arrival = arrival
 
 class Airport:
     """
@@ -23,8 +13,13 @@ class Airport:
         self.x = x
         self.y = y
 
-    def distanceTo(self, destination):
+    def distance_to(self, destination):
+        """
+        Reiknar fjarlægð milli self og destination
+        sem er Airport hlutur
+        """
         scale = 95
         kmperunit = 50
         length = math.sqrt((self.x - destination.x)**2 + (self.y - destination.y)**2)
         return round((length / scale) * kmperunit, 0)
+    
