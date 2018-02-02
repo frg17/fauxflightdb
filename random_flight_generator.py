@@ -7,7 +7,7 @@ import codecs
 
 # Les inn mögulega departure times og geymi í lista.
 departure_times = None
-with open("departuretimes.txt", "r") as f:
+with open("./files/departuretimes.txt", "r") as f:
     times = f.read()
     times = times.split(";")
     times = list(filter(lambda s: s != "", times))
@@ -41,7 +41,7 @@ def get_random_airports():
 
 
 # Bý til random flugferðir
-with codecs.open("flights.txt", "w", "utf-8-sig") as f:
+with codecs.open("./files/flights.txt", "w", "utf-8-sig") as f:
     n = 100
     dates = Dates.get_n_random_future_dates(n, 200)
     for i in range(0, n):
