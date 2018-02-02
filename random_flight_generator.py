@@ -5,6 +5,7 @@ from ffdbessentials import Airport, Flight, Dates
 import random
 import codecs
 
+# Les inn mögulega departure times og geymi í lista.
 departure_times = None
 with open("departuretimes.txt", "r") as f:
     times = f.read()
@@ -12,6 +13,7 @@ with open("departuretimes.txt", "r") as f:
     times = list(filter(lambda s: s != "", times))
     departure_times = times
 
+# Bý til flugvelli sem hægt er að nota
 airports = [
     Airport("Akureyri", 605, 194),
     Airport("Reykjavík", 262, 513),
@@ -19,6 +21,7 @@ airports = [
     Airport("Egilsstaðir", 935, 262)
 ]
 
+# Bý til random föll.
 def get_random_departure_time():
     """
     Skilar random farartíma
@@ -36,16 +39,11 @@ def get_random_airports():
 
     return (airports[ap1], airports[ap2])
 
-def get_random_dates(n, days_forward):
-    """
-    Skilar n random dates days_forward daga fram í tímann
-    """
-    return Dates.get_n_random_future_dates(n, days_forward)
 
-
+# Bý til random flugferðir
 with codecs.open("flights.txt", "w", "utf-8-sig") as f:
     n = 100
-    dates = get_random_dates(n, 200)
+    dates = Dates.get_n_random_future_dates(n, 200)
     for i in range(0, n):
         dep_time = get_random_departure_time()
         airp = get_random_airports()    
