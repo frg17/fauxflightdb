@@ -1,7 +1,7 @@
 """
 Aðal script fyrir db generator
 """
-from ffdbessentials import Airport, Flight
+from ffdbessentials import Airport, Flight, Dates
 import random
 import codecs
 
@@ -36,15 +36,24 @@ def get_random_airports():
 
     return (airports[ap1], airports[ap2])
 
+def get_random_dates(n, days_forward):
+    """
+    Skilar n random dates days_forward daga fram í tímann
+    """
+    return Dates.get_n_random_future_dates(n, days_forward)
 
 
 with codecs.open("flights.txt", "w", "utf-8-sig") as f:
-    for i in range(0, 100):
+    n = 100
+    dates = get_random_dates(n, 200)
+    for i in range(0, n):
         dep_time = get_random_departure_time()
-        airp = get_random_airports()
-        flight = Flight(airp[0], airp[1], dep_time)
-        flightinfo = "{} to {} at {}. Estimated travel time: {} minutes.\n".format(
-            flight.origin.name, flight.destination.name, flight.departure_time, flight.travel_time
+        airp = get_random_airports()    
+        flight = Flight(airp[0], airp[1], dates[i], dep_time)
+        flightinfo = "{} to {} on {}.{}.{} at {}. Estimated travel time: {} minutes.\n".format(
+            flight.origin.name, flight.destination.name,
+            flight.date.day, flight.date.month, flight.date.year,
+            flight.time, flight.travel_time
         )
         f.write(flightinfo)
 
