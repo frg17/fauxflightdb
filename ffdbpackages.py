@@ -8,3 +8,5 @@ Bæta þessari línu fyrir
 pip.main(["install", "<package>"])
 '''
 import pip
+
+pip.main(["install", "psycopg2"])
