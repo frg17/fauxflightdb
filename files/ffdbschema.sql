@@ -1,6 +1,6 @@
 CREATE TABLE flights (
-    dateof VARCHAR(50),
-    timeof VARCHAR(50),
+    dateof date,
+    timeof time,
     origin VARCHAR(255),
     destination VARCHAR(255),
     traveltime INT

@@ -21,8 +21,10 @@ def init_db(user, passw):
         setup_schema(user, passw)
     except psycopg2.OperationalError as err:
         print("{}".format(err))
+        raise Exception()
     except psycopg2.InternalError as err:
         print("{}".format(err))
+        raise Exception()
 
 def setup_schema(user, passw):
     """
@@ -37,8 +39,10 @@ def setup_schema(user, passw):
         conn.close()
     except psycopg2.OperationalError as err:
         print("{}".format(err))
+        raise Exception()
     except psycopg2.InternalError as err:
         print("{}".format(err))
+        raise Exception()
 
 def read_schema():
     """
@@ -51,6 +55,11 @@ def read_schema():
     return schema
     
 
+def connect(user, passw):
+    """
+    Skilar tengingu við fauxflightdb
+    """
+    return psycopg2.connect(database="fauxflightdb", user=user, password=passw)
 
 
 
