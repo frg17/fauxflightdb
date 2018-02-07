@@ -20,10 +20,10 @@ def init_db(user, passw):
 
         setup_schema(user, passw)
     except psycopg2.OperationalError as err:
-        print("{}".format(err))
+        print("database; init_db: {}".format(err))
         raise Exception()
     except psycopg2.InternalError as err:
-        print("{}".format(err))
+        print("database; init_db: {}".format(err))
         raise Exception()
 
 def setup_schema(user, passw):
@@ -35,13 +35,16 @@ def setup_schema(user, passw):
         cur = conn.cursor()
         cur.execute(read_schema())
         conn.commit()
+        conn.autocommit = True
+        cur.execute("GRANT ALL PRIVILEGES ON DATABASE fauxflightdb TO fsdev")
+        cur.execute("GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO fsdev")
         cur.close()
         conn.close()
     except psycopg2.OperationalError as err:
-        print("{}".format(err))
+        print("database; setup_schema: {}".format(err))
         raise Exception()
     except psycopg2.InternalError as err:
-        print("{}".format(err))
+        print("database; setup_schema:{}".format(err))
         raise Exception()
 
 def read_schema():
@@ -61,6 +64,24 @@ def connect(user, passw):
     """
     return psycopg2.connect(database="fauxflightdb", user=user, password=passw)
 
+def save_airports(user, passw, airports):
+    """
+    Set flugvelli í gagnagrunn og vista id þeirra
+    í airport objects
+    """
+    conn = connect(user, passw)
+    cur = conn.cursor()
+
+    # Set í gagnagrunn
+    for airp in airports:
+        cur.execute("INSERT INTO airports (airportname) VALUES (%s) RETURNING id;", (airp.name, ))
+        aid = int(cur.fetchone()[0])
+        airp.set_id(aid)
+
+    conn.commit()
+
+    cur.close()
+    conn.close()
 
 
 if __name__ == "__main__":

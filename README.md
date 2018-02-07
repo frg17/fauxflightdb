@@ -1,5 +1,11 @@
 # Faux Flight DB
 
+###
+Þarf að vera postgres superuser
+
+Þarf að vera til user fsdev (til að staðla)
+
+
 ### Travel times
 Ef við getum einhvernvegin litið á ísland sem grid, þá
 ættum við að geta búið til eitthvað ez function til að 

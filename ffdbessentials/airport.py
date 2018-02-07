@@ -2,6 +2,7 @@
 Airport class module
 """
 import math
+import psycopg2
 
 class Airport:
     """
@@ -26,3 +27,5 @@ class Airport:
         length = math.sqrt((self.x - destination.x)**2 + (self.y - destination.y)**2)
         return round((length / scale) * kmperunit, 0)
     
+    def set_id(self, id):
+        self.id = id

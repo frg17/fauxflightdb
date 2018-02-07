@@ -10,12 +10,14 @@ class Flight:
     _offset_constant = 1/20
     speed = 295
 
-    def __init__(self, origin, destination, departure_date, departure_time):
+    def __init__(self, flno, origin, destination, departure_date, departure_time, seats):
+        self.flno = flno
         self.origin = origin
         self.destination = destination
         self.date = departure_date
         self.time = departure_time
         self.travel_time = self.calculate_travel_time()
+        self.seats = seats
 
     
     def calculate_travel_time(self):
