@@ -1,5 +1,6 @@
 # Faux Flight DB
 
+<<<<<<< HEAD
 ###
 Þarf að vera postgres superuser
 
@@ -11,16 +12,16 @@ Ef við getum einhvernvegin litið á ísland sem grid, þá
 ættum við að geta búið til eitthvað ez function til að 
 reikna vegalengd milli flugvalla, og þá tíma sem tekur
 að fljúga á milli.
+=======
+### Upplýsingar
+Keyrsluscript-ið sjálft er random_flight_generator.py
+>>>>>>> 37fe896d7c104389522bf5e3709b842bad1ba730
 
-T.d.
-Það sem ég meina:
+Það sem þarf að laga er náttúrulega schemað fyrir gagnagrunninn. Á tíma skrifa þá t.d. á eftir að gera töflu yfir laus sæti fyrir flug og búa til allt í kringum það í forritinu sjálfu. 
 
-* RVK flugvöllur í (0, 0)
-* Ísafjörður í (0, 100)
-* Lengd vigurs frá RVK til ísafjarðar = 100
-* Lengd í `km = 100 * k`
-* Tími sem tekur að fljúga `ft = km / w`
+Í files möppunni er geymt configuration files sem hægt er að breyta, t.d. database schema, tímar sem flug geta verið o.s.frv..
 
-þar sem _k_ er skalinn á grid-inu og _w_ er km/klst
+ffdbessentials á að vera eiginlegur pakki sem inniheldur virknina í forritinu. Klasa og allskonar modules svo það sé ekki allt eitthvað í sama skjali.
 
-
+### Á eftir að laga
+LAGA magric numbers og strings!
