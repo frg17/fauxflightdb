@@ -1,7 +1,7 @@
 # Faux Flight DB
 
-<<<<<<< HEAD
-###
+
+### Notkun
 Þarf að vera postgres superuser
 
 Þarf að vera til user fsdev (til að staðla)
@@ -12,10 +12,9 @@ Ef við getum einhvernvegin litið á ísland sem grid, þá
 ættum við að geta búið til eitthvað ez function til að 
 reikna vegalengd milli flugvalla, og þá tíma sem tekur
 að fljúga á milli.
-=======
+
 ### Upplýsingar
 Keyrsluscript-ið sjálft er random_flight_generator.py
->>>>>>> 37fe896d7c104389522bf5e3709b842bad1ba730
 
 Það sem þarf að laga er náttúrulega schemað fyrir gagnagrunninn. Á tíma skrifa þá t.d. á eftir að gera töflu yfir laus sæti fyrir flug og búa til allt í kringum það í forritinu sjálfu. 
 
