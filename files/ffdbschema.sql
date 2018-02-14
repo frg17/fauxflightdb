@@ -15,9 +15,22 @@ CREATE TABLE flights (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE users (
+    ssn CHAR(10),
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (ssn),
+    CONSTRAINT ssn_match CHECK (ssn ~ '[0-9]{10}')
+);
+
 CREATE TABLE bookings (
     flightid INT REFERENCES flights (id),
+    ssn CHAR(11) REFERENCES users (ssn),
+    PRIMARY KEY (flightid, ssn)
+);
+
+CREATE TABLE seats (
+    flightid INT REFERENCES flights (id),
     seats INT,
-    booked INT DEFAULT 0,
-    PRIMARY KEY (flightid)
+    booked INT,
+    CONSTRAINT seat_check CHECK (booked <= seats)
 );

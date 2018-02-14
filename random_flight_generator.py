@@ -81,14 +81,14 @@ def make_and_seed_database():
         conn = FFDB.connect(usern, passw)
         cur = conn.cursor()
 
-        flights = generate_random_flights(100)
+        flights = generate_random_flights(1000)
         for f in flights:
             cur.execute("""
                 INSERT INTO flights (flno, dateof, timeof, origin, destination, traveltime) 
                 VALUES (%s, %s, %s, %s, %s, %s) RETURNING id
                 """, (f.flno, f.date, f.time, f.origin.id, f.destination.id, f.travel_time,))
             flid = cur.fetchone()[0]
-            cur.execute("INSERT INTO bookings (flightid, seats, booked) VALUES (%s, %s, %s);",
+            cur.execute("INSERT INTO seats (flightid, seats, booked) VALUES (%s, %s, %s);",
             (flid, f.seats, random.randint(0, f.seats)))
 
         conn.commit()
