@@ -24,7 +24,7 @@ CREATE TABLE users (
 
 CREATE TABLE bookings (
     flightid INT REFERENCES flights (id),
-    ssn CHAR(11) REFERENCES users (ssn),
+    ssn CHAR(10) REFERENCES users (ssn),
     PRIMARY KEY (flightid, ssn)
 );
 
