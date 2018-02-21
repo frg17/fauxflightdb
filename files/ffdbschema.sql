@@ -15,6 +15,13 @@ CREATE TABLE flights (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE seats (
+    flightid INT,
+    seatid VARCHAR(3),
+    booked BOOLEAN,
+    PRIMARY KEY (flightid, seatid)
+);
+
 CREATE TABLE users (
     ssn CHAR(10),
     name VARCHAR(255) NOT NULL,
@@ -23,14 +30,9 @@ CREATE TABLE users (
 );
 
 CREATE TABLE bookings (
-    flightid INT REFERENCES flights (id),
+    id SERIAL PRIMARY KEY,
     ssn CHAR(10) REFERENCES users (ssn),
-    PRIMARY KEY (flightid, ssn)
-);
-
-CREATE TABLE seats (
     flightid INT REFERENCES flights (id),
-    seats INT,
-    booked INT,
-    CONSTRAINT seat_check CHECK (booked <= seats)
+    seatid VARCHAR(3),
+    FOREIGN KEY (flightid, seatid) REFERENCES seats(flightid, seatid)
 );
