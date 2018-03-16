@@ -33,5 +33,6 @@ CREATE TABLE bookings (
     ssn CHAR(10) REFERENCES users (ssn),
     flightid INT REFERENCES flights (id),
     seatid VARCHAR(3),
+    UNIQUE(flightid, seatid),
     FOREIGN KEY (flightid, seatid) REFERENCES seats(flightid, seatid)
 );
