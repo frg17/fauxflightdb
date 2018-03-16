@@ -1,7 +1,6 @@
 CREATE TABLE airports (
-    id SERIAL,
     airportname VARCHAR(255),
-    PRIMARY KEY (id)
+    PRIMARY KEY (airportname)
 );
 
 CREATE TABLE flights (
@@ -9,8 +8,8 @@ CREATE TABLE flights (
     flno VARCHAR(20),
     dateof date,
     timeof time,
-    origin int REFERENCES airports (id),
-    destination int REFERENCES airports(id),
+    origin VARCHAR(255) REFERENCES airports (airportname),
+    destination VARCHAR(255) REFERENCES airports(airportname),
     traveltime INT,
     PRIMARY KEY (id)
 );

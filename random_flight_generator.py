@@ -73,8 +73,8 @@ def make_and_seed_database():
     Býr til gagnagrunn, býr til n flug og 
     setur þau inn í nýja gagnagrunninn
     """
-    usern = input("Postgres user: ")
-    passw = getpass()
+    usern = "postgres" #input("Postgres user: ")
+    passw = "5.svalir.gaurar" #getpass()
     try:
         FFDB.init_db(usern, passw)
         FFDB.save_airports(usern, passw, airports)
@@ -86,7 +86,7 @@ def make_and_seed_database():
             cur.execute("""
                 INSERT INTO flights (flno, dateof, timeof, origin, destination, traveltime) 
                 VALUES (%s, %s, %s, %s, %s, %s) RETURNING id
-                """, (f.flno, f.date, f.time, f.origin.id, f.destination.id, f.travel_time,))
+                """, (f.flno, f.date, f.time, f.origin.name, f.destination.name, f.travel_time,))
             flid = cur.fetchone()[0]
             for seat in f.seats:            
                 cur.execute("INSERT INTO seats (flightid, seatid, booked) VALUES (%s, %s, %s);",

@@ -74,9 +74,7 @@ def save_airports(user, passw, airports):
 
     # Set í gagnagrunn
     for airp in airports:
-        cur.execute("INSERT INTO airports (airportname) VALUES (%s) RETURNING id;", (airp.name, ))
-        aid = int(cur.fetchone()[0])
-        airp.set_id(aid)
+        cur.execute("INSERT INTO airports (airportname) VALUES (%s);", (airp.name, ))
 
     conn.commit()
 
