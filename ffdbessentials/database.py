@@ -38,6 +38,7 @@ def setup_schema(user, passw):
         conn.autocommit = True
         cur.execute("GRANT ALL PRIVILEGES ON DATABASE fauxflightdb TO fsdev")
         cur.execute("GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO fsdev")
+        cur.execute("GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO fsdev")
         cur.close()
         conn.close()
     except psycopg2.OperationalError as err:

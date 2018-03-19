@@ -73,8 +73,8 @@ def make_and_seed_database():
     Býr til gagnagrunn, býr til n flug og 
     setur þau inn í nýja gagnagrunninn
     """
-    usern = "postgres" #input("Postgres user: ")
-    passw = "5.svalir.gaurar" #getpass()
+    usern = input("Postgres user: ")
+    passw = getpass()
     try:
         FFDB.init_db(usern, passw)
         FFDB.save_airports(usern, passw, airports)
