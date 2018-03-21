@@ -24,8 +24,10 @@ CREATE TABLE seats (
 CREATE TABLE users (
     ssn CHAR(10),
     name VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     PRIMARY KEY (ssn),
-    CONSTRAINT ssn_match CHECK (ssn ~ '[0-9]{10}')
+    CONSTRAINT ssn_match CHECK (ssn ~ '[0-9]{10}'),
+    CONSTRAINT CHK_password CHECK (length(password) > 5)
 );
 
 CREATE TABLE bookings (
